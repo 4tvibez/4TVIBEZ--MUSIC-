@@ -102,3 +102,186 @@
   .hero-art{right:-12px;bottom:18px;width:calc(100% + 24px);height:275px;opacity:.96}
   .artist-callout{background-position:center,65% center}
 }
+
+
+/* MIDNIGHT NEON — 4TVIBEZ MUSIC visual identity */
+:root{
+  --bg:#080914;
+  --panel:#101225;
+  --panel2:#171a31;
+  --gold:#a78bfa;
+  --gold2:#c4b5fd;
+  --text:#f5f3ff;
+  --muted:#9294b2;
+  --line:#292c49;
+}
+body{
+  background:
+    radial-gradient(ellipse at 76% 0%,#31205a30 0%,transparent 36%),
+    radial-gradient(ellipse at 12% 42%,#173c7130 0%,transparent 34%),
+    var(--bg);
+}
+.sidebar{background:linear-gradient(180deg,#0d1020,#090b17);border-color:#282b49}
+.brand-mark{border-color:#9b7bff;color:#c4b5fd;box-shadow:0 0 22px #8b5cf633}
+.brand-copy small{color:#a78bfa}
+.nav-link{border:1px solid transparent}
+.nav-link:hover,.nav-link.active{
+  color:#e3d9ff;
+  background:linear-gradient(100deg,#8b5cf626,#3b82f614);
+  border-color:#8b5cf64a;
+  box-shadow:inset 3px 0 #a78bfa,0 0 22px #8b5cf612;
+}
+.icon-button{color:#b8a2ff}
+.sidebar-rule{background:#282b49}
+.gold-note{
+  background:linear-gradient(125deg,#211943,#11172b 75%);
+  border-color:#5b45a2;
+  box-shadow:0 8px 30px #542ca51c;
+}
+.note-icon{color:#c4b5fd}
+.upload-side,.auth-open{
+  border-color:#8064d9;color:#d8ccff;
+  background:linear-gradient(100deg,#8b5cf61a,#3b82f610);
+  transition:.2s;
+}
+.upload-side:hover,.auth-open:hover{background:#8b5cf633;box-shadow:0 0 22px #8b5cf633}
+.topbar{
+  background:#090b17eF;
+  border-color:#292c49;
+}
+.round-button{background:#14172b;border-color:#34385b;color:#c1b7e8}
+.round-button:hover{border-color:#9b7bff;color:#fff;background:#282044}
+.search-box{
+  background:#12152a;border-color:#303454;color:#b9a3ff;
+  transition:border-color .2s,box-shadow .2s;
+}
+.search-box:focus-within{border-color:#9b7bff;box-shadow:0 0 0 3px #8b5cf622,0 0 24px #8b5cf622}
+.search-box input::placeholder{color:#888ba9}
+.search-box kbd{border-color:#3b3d60;color:#9b9cba}
+.upload-top,.primary-button{
+  background:linear-gradient(115deg,#a78bfa 0%,#8b5cf6 48%,#3b82f6 100%);
+  color:#fff;
+  box-shadow:0 8px 26px #7147dc45,inset 0 1px #ffffff55;
+  transition:transform .2s,box-shadow .2s,filter .2s;
+}
+.upload-top:hover,.primary-button:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.12);
+  box-shadow:0 12px 32px #7147dc66,0 0 24px #3b82f644;
+}
+.avatar{background:linear-gradient(135deg,#39256c,#172b55);border-color:#9b7bff;color:#e3d9ff}
+.eyebrow{color:#b8a2ff}
+.eyebrow i{background:#a78bfa;box-shadow:0 0 14px #a78bfa}
+h1 em{background:linear-gradient(100deg,#c4b5fd,#a78bfa 45%,#60a5fa);background-clip:text;-webkit-background-clip:text;color:transparent}
+.hero-section{border-color:#292c49}
+.hero-copy p{color:#aaaac5}
+.hero-art{
+  border-color:#8064d988;
+  box-shadow:inset 0 0 90px #000b,0 24px 65px #0008,0 0 40px #7147dc1a;
+}
+.hero-art:before{background:linear-gradient(115deg,#090b1db8 0%,transparent 52%,#8b5cf62b 100%)}
+.art-glow{background:#8257ff44}
+.art-ring{border-color:#b5a0ff70;box-shadow:0 0 24px #8b5cf62b}
+.art-title{border-color:#a78bfa77;background:#080914a8}
+.art-title span,.art-title small{color:#d1c4ff}
+.art-equalizer i{background:linear-gradient(180deg,#c4b5fd,#3b82f6)}
+.art-star{color:#d8ccff;text-shadow:0 0 15px #a78bfa}
+.hero-bottom{color:#8587a8}
+.section-heading h2{color:#f4f1ff}
+.section-caption{color:#8587a8}
+.mood-card{
+  border-color:#ffffff30;
+  box-shadow:inset 0 -70px 65px #080914c9,inset 0 0 35px #0006;
+  transition:transform .24s,border-color .24s,box-shadow .24s,filter .24s;
+}
+.mood-card:hover{
+  transform:translateY(-6px) scale(1.012);
+  border-color:#b9a3ff;
+  box-shadow:inset 0 -70px 65px #080914c9,0 12px 32px #0007,0 0 26px #8b5cf633;
+  filter:saturate(1.15);
+}
+.mood-afro{background-image:linear-gradient(0deg,#090d1de8 0%,#10152b55 68%,#10152b20 100%),url("https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=700&q=82")!important}
+.mood-chill{background-image:linear-gradient(0deg,#090d1de8 0%,#10152b55 68%,#10152b20 100%),url("https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=700&q=82")!important}
+.mood-energy{background-image:linear-gradient(0deg,#090d1de8 0%,#10152b55 68%,#10152b20 100%),url("https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=700&q=82")!important}
+.mood-love{background-image:linear-gradient(0deg,#090d1de8 0%,#10152b55 68%,#10152b20 100%),url("https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=700&q=82")!important}
+.mood-card span{color:#d2cbea}
+.mood-card b{color:#d6caff}
+.subtle-button{color:#c4b5fd}
+.track-table th{color:#9294b2;border-color:#292c49}
+.track-table td{border-color:#242741;color:#b7b8d0}
+.track-table tbody tr:not(.empty-row):hover{background:linear-gradient(90deg,#211a3b,#12162a)}
+.track-name strong{color:#f3f0ff}
+.track-name small{color:#9698b5}
+.track-cover{
+  background:linear-gradient(145deg,#8b5cf688,#172c59aa),url("https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=160&q=75") center/cover;
+  box-shadow:0 4px 16px #0009,0 0 14px #8b5cf622;
+}
+.row-play{color:#c4b5fd}
+.empty-icon{color:#b8a2ff}
+.empty-row strong{color:#eeeaff}
+.empty-row span:not(.empty-icon){color:#9294b2}
+.outline-button{border-color:#8064d9;color:#d4c8ff;background:#8b5cf610}
+.outline-button:hover{background:#8b5cf633;box-shadow:0 0 18px #8b5cf622}
+.artist-callout{
+  background:
+    linear-gradient(100deg,#101225f2 0%,#101225df 48%,#10122572 100%),
+    url("https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=82") center 42%/cover;
+  border-color:#59458e;
+  box-shadow:0 12px 38px #0005,0 0 32px #7147dc12;
+}
+.artist-callout p{color:#aaaac5}
+.callout-stamp{border-color:#a78bfa;background:#090b1dbb;color:#d8ccff;box-shadow:0 0 35px #8b5cf633}
+.footer{border-color:#292c49;color:#777b9b}
+.footer-brand span{color:#b8a2ff}
+.player-bar{
+  background:linear-gradient(100deg,#101225,#0c1020 60%,#11132a);
+  border-color:#34365c;
+  box-shadow:0 -12px 40px #0005;
+}
+.mini-cover{
+  background:linear-gradient(145deg,#8b5cf688,#172c59aa),url("https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=180&q=75") center/cover;
+  box-shadow:0 4px 16px #0008,0 0 15px #8b5cf622;
+}
+.now-text span{color:#9294b2}
+.heart-button{color:#aaa4cb}
+.heart-button.liked{color:#fb82b4;text-shadow:0 0 14px #fb82b466}
+.player-small{color:#b2b3cf}
+.player-small:hover,.player-small.active{color:#c4b5fd;text-shadow:0 0 12px #a78bfa88}
+.play-button{
+  background:linear-gradient(135deg,#c4b5fd,#8b5cf6);
+  color:#fff;
+  box-shadow:0 0 0 4px #8b5cf622,0 0 22px #8b5cf655;
+}
+.play-button:hover{filter:brightness(1.12);transform:scale(1.06)}
+.progress-row{color:#9698b5}
+.progress-row input,.player-extra input{accent-color:#a78bfa}
+.player-extra{color:#c4b5fd}
+.player-extra .mute-button{color:#c4b5fd}
+.toast{background:#1b1730;border-color:#8064d9;color:#e4dcff;box-shadow:0 10px 35px #0008}
+.filter-pill{border-color:#393b60;background:#14172b;color:#b4b4d0}
+.filter-pill:hover,.filter-pill.active{background:linear-gradient(110deg,#a78bfa,#3b82f6);border-color:#a78bfa;color:#fff;box-shadow:0 0 18px #8b5cf644}
+.library-count{color:#9294b2}
+.mood-card.selected{outline-color:#c4b5fd;box-shadow:0 0 28px #8b5cf644}
+.remove-track{color:#aaa4cb}
+.remove-track:hover{color:#fb82b4}
+.auth-panel{background:linear-gradient(145deg,#171a31,#0e1122);border-color:#6551a1;box-shadow:0 25px 90px #000c,0 0 40px #7147dc22}
+.auth-panel>p{color:#aaaac5}
+.auth-panel form label{color:#d0c9e8}
+.auth-panel form input{background:#090b18;border-color:#393c60;color:#fff}
+.auth-panel form input:focus{border-color:#a78bfa;box-shadow:0 0 0 3px #8b5cf622}
+.auth-switch button,.auth-logout{color:#c4b5fd}
+.auth-message{color:#c4b5fd!important}
+@keyframes neonDrift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@media(prefers-reduced-motion:no-preference){
+  .hero-copy .eyebrow i{animation:neonPulse 2.4s ease-in-out infinite}
+  .art-glow{animation:neonPulse 5s ease-in-out infinite}
+}
+@keyframes neonPulse{0%,100%{opacity:.65}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+@media(max-width:650px){
+  .sidebar{background:linear-gradient(180deg,#101329,#090b17);border-color:#34365c}
+  .topbar{background:#090b17f2}
+  .artist-callout{background-position:center,65% center}
+}
