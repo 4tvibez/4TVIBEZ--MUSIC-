@@ -125,6 +125,100 @@ function renderTracks() {
   });
 }
 
+
+let mediaRecorder = null;
+let recordingStream = null;
+let recordingChunks = [];
+let recordingStartedAt = 0;
+
+async function toggleRecording() {
+  const button = document.getElementById('recordButton');
+  if (mediaRecorder && mediaRecorder.state === 'recording') {
+    button.disabled = true;
+    button.querySelector('span').textContent = 'Saving…';
+    mediaRecorder.stop();
+    return;
+  }
+
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || typeof MediaRecorder === 'undefined') {
+    notify('Voice recording is not supported in this browser. Try the latest Chrome over HTTPS.');
+    return;
+  }
+
+  try {
+    recordingStream = await navigator.mediaDevices.getUserMedia({
+      audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true }
+    });
+    const mimeType = ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4']
+      .find(type => MediaRecorder.isTypeSupported(type));
+    mediaRecorder = mimeType ? new MediaRecorder(recordingStream, { mimeType }) : new MediaRecorder(recordingStream);
+    recordingChunks = [];
+    mediaRecorder.ondataavailable = event => {
+      if (event.data && event.data.size) recordingChunks.push(event.data);
+    };
+    mediaRecorder.onerror = () => {
+      notify('The recording stopped because of a microphone error.');
+      resetRecorderButton();
+      if (recordingStream) recordingStream.getTracks().forEach(track => track.stop());
+    };
+    mediaRecorder.onstop = async () => {
+      const blob = new Blob(recordingChunks, { type: mediaRecorder.mimeType || 'audio/webm' });
+      if (recordingStream) recordingStream.getTracks().forEach(track => track.stop());
+      recordingStream = null;
+      resetRecorderButton();
+
+      if (!blob.size) {
+        notify('No audio was captured. Please try again.');
+        return;
+      }
+
+      const stamp = new Date().toLocaleString();
+      const track = {
+        id: (crypto.randomUUID ? crypto.randomUUID() : Date.now() + '-' + Math.random()),
+        title: 'Voice recording ' + stamp,
+        artist: 'Recorded by you',
+        blob,
+        url: URL.createObjectURL(blob),
+        duration: timeFormat((Date.now() - recordingStartedAt) / 1000)
+      };
+
+      try {
+        await storeTrack(track);
+        tracks.unshift(track);
+        renderTracks();
+        notify('Your voice recording is saved in Your Library on this device.');
+      } catch (error) {
+        URL.revokeObjectURL(track.url);
+        console.error('Could not save voice recording:', error);
+        notify('Recording finished, but browser storage could not save it.');
+      }
+    };
+
+    recordingStartedAt = Date.now();
+    mediaRecorder.start(250);
+    button.classList.add('is-recording');
+    button.setAttribute('aria-pressed', 'true');
+    button.querySelector('span').textContent = 'Stop recording';
+    notify('Recording… speak into your microphone. Tap Stop recording when finished.');
+  } catch (error) {
+    console.error('Microphone access failed:', error);
+    const message = error && error.name === 'NotAllowedError'
+      ? 'Microphone permission was denied. Allow microphone access in your browser settings.'
+      : 'Could not access the microphone. Check that it is connected and try again.';
+    notify(message);
+    if (recordingStream) recordingStream.getTracks().forEach(track => track.stop());
+    recordingStream = null;
+  }
+}
+
+function resetRecorderButton() {
+  const button = document.getElementById('recordButton');
+  button.disabled = false;
+  button.classList.remove('is-recording');
+  button.setAttribute('aria-pressed', 'false');
+  button.querySelector('span').textContent = 'Record';
+}
+
 function openPicker() {
   audioInput.click();
 }
@@ -287,7 +381,7 @@ async function initialiseLibrary() {
   if (button) button.addEventListener('click', openPicker);
 });
 audioInput.addEventListener('change', event => addFiles(event.target.files));
-document.getElementById('playButton').addEventListener('click', togglePlay);
+document.getElementById('recordButton').addEventListener('click', toggleRecording);\ndocument.getElementById('playButton').addEventListener('click', togglePlay);
 document.getElementById('nextButton').addEventListener('click', nextTrack);
 document.getElementById('previousButton').addEventListener('click', previousTrack);
 
