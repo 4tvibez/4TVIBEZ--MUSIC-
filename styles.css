@@ -878,7 +878,7 @@ body{background-image:none!important;}
   content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
   background:
     linear-gradient(125deg,rgba(245,241,255,.58),rgba(238,246,255,.48) 48%,rgba(255,239,249,.58)),
-    url("https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=2400&q=90") center center/cover;
+    linear-gradient(rgba(0,0,0,.22),rgba(0,0,0,.22)),url("./assets/4tvibez-music-studio.jpg") center center/cover;
 }
 .app-shell:after{
   content:"4TVIBEZ\\A MUSIC";
