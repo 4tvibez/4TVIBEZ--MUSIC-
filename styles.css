@@ -877,8 +877,8 @@ body{background-image:none!important;}
 .app-shell:before{
   content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
   background:
-    linear-gradient(125deg,rgba(245,241,255,.58),rgba(238,246,255,.48) 48%,rgba(255,239,249,.58)),
-    linear-gradient(rgba(0,0,0,.22),rgba(0,0,0,.22)),url("./4tvibez-music-studio.jpg") center center/cover;
+    linear-gradient(125deg,rgba(5,5,7,.30),rgba(12,10,8,.18) 48%,rgba(5,5,7,.34)),
+    linear-gradient(rgba(0,0,0,.10),rgba(0,0,0,.10)),url("./ChatGPT%20Image%20Jul%2029,%202026,%2001_55_12%20AM.png") center center/cover;
 }
 .app-shell:after{
   content:"4TVIBEZ\\A MUSIC";
