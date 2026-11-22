@@ -21,3 +21,15 @@
 .auth-message{min-height:18px;margin:10px 0 0!important;color:var(--gold2)!important;font-size:11px!important}
 .auth-logout{display:block;margin:10px auto 0}
 @media(max-width:600px){.auth-panel{padding:27px 22px}.auth-open{padding:8px 11px}}
+
+/* Interactive polish: animated sound bars, mute control and favourites */
+.player-extra .mute-button{border:0;background:transparent;color:var(--gold);font-size:17px;padding:5px;cursor:pointer}
+.player-extra .mute-button:hover{color:var(--gold2);transform:scale(1.12)}
+.player-bar.is-playing .mini-cover{box-shadow:0 0 0 2px #d4a84955,0 0 24px #d4a84944;animation:coverPulse 1.8s ease-in-out infinite}
+.player-bar.is-playing .mini-cover:after{content:"";position:absolute}
+.mini-cover{position:relative}
+.player-bar.is-playing .player-controls .play-button{box-shadow:0 0 0 5px #d4a84920,0 0 22px #d4a84955}
+.heart-button.liked{color:#ef8d9b;text-shadow:0 0 14px #ef8d9b66;transform:scale(1.12)}
+.track-table tr[hidden]{display:none}
+@keyframes coverPulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.35)}}
+@media(prefers-reduced-motion:reduce){.player-bar.is-playing .mini-cover{animation:none}}
