@@ -10,20 +10,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=studio-motion-v3-20261122">
+  <link rel="stylesheet" href="styles.css?v=top-navigation-20261122">
 </head>
 <body>
   <div class="app-shell">
     <aside class="sidebar" id="sidebar">
-      <a class="brand" href="#" aria-label="4TVIBEZ MUSIC home">
-        <span class="brand-mark">4T</span>
-        <span class="brand-copy"><strong>4TVIBEZ</strong><small>MUSIC</small></span>
-      </a>
-      <nav class="main-nav" aria-label="Main navigation">
-        <a class="nav-link active" href="#home" data-view="home"><span class="nav-icon">⌂</span>Home</a>
-        <a class="nav-link" href="#discover" data-view="discover"><span class="nav-icon">⌕</span>Discover</a>
-        <a class="nav-link" href="#library" data-view="library"><span class="nav-icon">▤</span>Your Library</a>
-      </nav>
+
       <div class="sidebar-rule"></div>
       <div class="side-heading"><span>YOUR PLAYLISTS</span><button id="createPlaylist" class="icon-button" aria-label="Create playlist">＋</button></div>
       <div id="playlistList" class="playlist-list"><p class="muted side-empty">Your playlists will appear here.</p></div>
@@ -35,6 +27,12 @@
 
     <main class="main-content" id="home">
       <header class="topbar">
+        <a class="brand top-brand" href="#" aria-label="4TVIBEZ MUSIC home"><span class="brand-mark">4T</span><span class="brand-copy"><strong>4TVIBEZ</strong><small>MUSIC</small></span></a>
+        <nav class="main-nav top-nav" aria-label="Main navigation">
+          <a class="nav-link active" href="#home" data-view="home"><span class="nav-icon">⌂</span>Home</a>
+          <a class="nav-link" href="#discover" data-view="discover"><span class="nav-icon">⌕</span>Discover</a>
+          <a class="nav-link" href="#library" data-view="library"><span class="nav-icon">▤</span>Your Library</a>
+        </nav>
         <button class="mobile-menu icon-button" id="mobileMenu" aria-label="Open menu">☰</button>
         <div class="history-buttons"><button class="round-button" aria-label="Go back" id="goBack">‹</button><button class="round-button" aria-label="Go forward" id="goForward">›</button></div>
         <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="What do you want to play?" autocomplete="off"><kbd>⌘ K</kbd></label>
