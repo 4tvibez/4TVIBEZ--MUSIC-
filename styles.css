@@ -834,3 +834,33 @@ body{
   box-shadow:0 8px 28px rgba(55,36,105,.18);backdrop-filter:blur(12px);
 }
 @media(max-width:650px){.app-shell:before{font-size:clamp(42px,13vw,82px);white-space:normal;text-align:center;width:100%;}.hero-section:after{right:14px;top:12px;font-size:8px;padding:7px 10px;}}
+
+
+/* 4TVIBEZ MUSIC — visible branded background artwork */
+.app-shell{position:relative;z-index:1;isolation:auto;background:transparent;}
+.app-shell:before{content:none!important;display:none!important;}
+body{position:relative;isolation:isolate;}
+body:before{
+  content:"4TVIBEZ\\A MUSIC";
+  white-space:pre;
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+  font-family:var(--display,system-ui,sans-serif);
+  font-size:clamp(76px,15vw,230px);
+  line-height:.82;font-weight:950;letter-spacing:.055em;
+  color:rgba(117,83,224,.13);
+  text-shadow:0 0 18px rgba(157,126,255,.22),0 0 65px rgba(119,91,225,.2);
+  transform:rotate(-12deg) scale(1.04);
+  -webkit-text-stroke:1px rgba(255,255,255,.22);
+}
+body:after{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 50% 42%,rgba(171,145,255,.12),transparent 47%),
+    radial-gradient(ellipse at 12% 85%,rgba(104,194,255,.10),transparent 35%);
+}
+.app-shell>*{position:relative;z-index:1;}
+@media(max-width:650px){
+  body:before{font-size:clamp(58px,17vw,112px);line-height:.9;transform:rotate(-10deg);color:rgba(117,83,224,.12);}
+}
