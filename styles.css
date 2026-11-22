@@ -423,3 +423,109 @@ h1 em{background:linear-gradient(100deg,#7959e4,#4d83df);background-clip:text;-w
   .topbar{background:#ffffffef}
   .artist-callout{background-position:center,65% center}
 }
+
+
+/* AURORA MOTION — bright, immersive 4TVIBEZ experience */
+body{
+  background:linear-gradient(135deg,#f7f8ff 0%,#f1edff 35%,#eaf5ff 68%,#fff3fa 100%);
+  background-size:240% 240%;
+  animation:auroraCanvas 22s ease-in-out infinite;
+}
+body:before{
+  content:"";
+  position:fixed;
+  z-index:-1;
+  inset:-22%;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at 18% 22%,#b8a2ff55 0%,transparent 32%),
+    radial-gradient(ellipse at 78% 25%,#8bc8ff55 0%,transparent 30%),
+    radial-gradient(ellipse at 58% 82%,#ffb9df44 0%,transparent 32%);
+  filter:blur(28px);
+  animation:auroraFloat 18s ease-in-out infinite alternate;
+}
+@keyframes auroraCanvas{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+@keyframes auroraFloat{
+  0%{transform:translate3d(-2%,1%,0) rotate(-3deg) scale(1)}
+  50%{transform:translate3d(3%,-2%,0) rotate(4deg) scale(1.08)}
+  100%{transform:translate3d(-1%,3%,0) rotate(-2deg) scale(1.03)}
+}
+.topbar{background:#ffffffd9;backdrop-filter:blur(22px)}
+.sidebar{box-shadow:8px 0 34px #45417b08}
+.hero-section{isolation:isolate}
+.hero-copy{animation:riseIn .85s cubic-bezier(.2,.75,.25,1) both}
+.hero-art{
+  animation:heroFloat 8s ease-in-out infinite;
+  transform-origin:center;
+}
+.hero-art:after{
+  content:"";
+  position:absolute;
+  inset:-40% -70%;
+  z-index:0;
+  pointer-events:none;
+  background:linear-gradient(110deg,transparent 38%,#ffffff55 48%,#ffffff08 54%,transparent 64%);
+  transform:translateX(-65%) rotate(12deg);
+  animation:artShimmer 8s ease-in-out infinite;
+}
+.art-title,.art-ring,.art-equalizer,.art-star{z-index:1}
+.art-ring{animation:ringOrbit 16s linear infinite}
+.ring-two{animation-direction:reverse;animation-duration:21s}
+.art-equalizer i{transform-origin:center;animation:equalizerDance 1s ease-in-out infinite alternate}
+.art-equalizer i:nth-child(2n){animation-delay:-.45s}
+.art-equalizer i:nth-child(3n){animation-delay:-.7s}
+.art-equalizer i:nth-child(4n){animation-delay:-.2s}
+.art-star{animation:starTwinkle 3s ease-in-out infinite}
+.star-two{animation-delay:-1.4s}
+@keyframes riseIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes heroFloat{0%,100%{translate:0 0}50%{translate:0 -9px}}
+@keyframes artShimmer{0%,38%{transform:translateX(-65%) rotate(12deg)}75%,100%{transform:translateX(65%) rotate(12deg)}}
+@keyframes ringOrbit{to{rotate:360deg}}
+@keyframes equalizerDance{from{scale:1 .42}to{scale:1 1.12}}
+@keyframes starTwinkle{0%,100%{opacity:.5;scale:.8}50%{opacity:1;scale:1.25}}
+.mood-card{
+  animation:cardArrive .7s both;
+  box-shadow:0 10px 26px #31315d13,inset 0 -70px 65px #10112c80;
+}
+.mood-card:nth-child(2){animation-delay:.08s}
+.mood-card:nth-child(3){animation-delay:.16s}
+.mood-card:nth-child(4){animation-delay:.24s}
+@keyframes cardArrive{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.mood-card:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(115deg,transparent 20%,#ffffff25 48%,transparent 72%);
+  transform:translateX(-130%);
+  transition:transform .7s ease;
+}
+.mood-card:hover:after{transform:translateX(130%)}
+.track-table tbody tr:not(.empty-row){animation:rowFade .35s ease both}
+@keyframes rowFade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.artist-callout{box-shadow:0 16px 45px #39335f16;transition:transform .3s,box-shadow .3s}
+.artist-callout:hover{transform:translateY(-3px);box-shadow:0 22px 55px #39335f20}
+.callout-stamp{animation:stampFloat 6s ease-in-out infinite}
+@keyframes stampFloat{0%,100%{transform:rotate(12deg) translateY(0)}50%{transform:rotate(4deg) translateY(-7px)}}
+.player-bar{backdrop-filter:blur(22px)}
+.player-bar.is-playing .mini-cover{animation:coverPulse 1.8s ease-in-out infinite,coverGlow 3s ease-in-out infinite}
+@keyframes coverGlow{0%,100%{box-shadow:0 4px 14px #34305c20,0 0 12px #7050df16}50%{box-shadow:0 4px 18px #7050df35,0 0 24px #7050df45}}
+.primary-button,.upload-top,.play-button{position:relative;overflow:hidden}
+.primary-button:after,.upload-top:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(110deg,transparent 25%,#ffffff55 50%,transparent 75%);
+  transform:translateX(-130%);
+  transition:transform .65s ease;
+}
+.primary-button:hover:after,.upload-top:hover:after{transform:translateX(130%)}
+@media(prefers-reduced-motion:reduce){
+  body,body:before,.hero-copy,.hero-art,.hero-art:after,.art-ring,.art-equalizer i,.art-star,.mood-card,.callout-stamp,.player-bar.is-playing .mini-cover{animation:none!important}
+  .mood-card:after,.primary-button:after,.upload-top:after{display:none}
+}
+@media(max-width:650px){
+  .hero-art{animation:heroFloat 8s ease-in-out infinite}
+}
