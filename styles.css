@@ -1173,3 +1173,39 @@ body:before,body:after{
 @media(prefers-reduced-motion:reduce){
   .app-shell:before,.app-shell:after{animation:none!important;}
 }
+
+
+/* TOP NAVIGATION — free the entire left rail */
+.app-shell{display:block!important;grid-template-columns:minmax(0,1fr)!important;}
+.sidebar{display:none!important;}
+.main-content{width:100%;max-width:none!important;margin:0!important;padding-left:clamp(18px,4vw,64px)!important;padding-right:clamp(18px,4vw,64px)!important;}
+.topbar{display:flex!important;gap:clamp(10px,2vw,26px)!important;overflow:visible;}
+.top-brand{flex:none!important;margin:0!important;gap:9px!important;}
+.top-brand .brand-mark{width:36px;height:36px;font-size:14px;}
+.top-brand .brand-copy strong{font-size:13px;}
+.top-brand .brand-copy small{font-size:8px;letter-spacing:4px;}
+.top-nav{display:flex!important;align-items:center;gap:4px!important;flex:none;}
+.top-nav .nav-link{padding:10px 11px!important;gap:7px!important;white-space:nowrap;font-size:12px!important;}
+.top-nav .nav-icon{font-size:17px!important;width:auto!important;}
+.topbar .history-buttons{flex:none;}
+.topbar .search-box{flex:1;width:auto;min-width:120px;max-width:420px;}
+.topbar .top-actions{flex:none;}
+.mobile-menu{display:none!important;}
+@media(max-width:900px){
+ .main-content{padding-left:22px!important;padding-right:22px!important;}
+ .topbar{gap:10px!important;}
+ .top-nav .nav-link{padding:9px 7px!important;font-size:11px!important;}
+ .top-nav .nav-icon{display:none;}
+ .topbar .history-buttons{display:none;}
+}
+@media(max-width:650px){
+ .main-content{padding:0 14px 120px!important;}
+ .topbar{height:auto!important;min-height:68px;padding:9px 0!important;flex-wrap:wrap;gap:8px!important;}
+ .top-brand{margin-right:auto!important;}
+ .top-nav{order:3;width:100%;justify-content:flex-start;overflow-x:auto;padding:2px 0 5px;}
+ .top-nav .nav-link{padding:8px 11px!important;font-size:11px!important;}
+ .top-nav .nav-icon{display:inline!important;}
+ .topbar .search-box{order:4;flex:1 1 100%;max-width:none;width:100%;}
+ .topbar .top-actions{margin-left:auto;gap:8px!important;}
+ .topbar .top-actions .record-top span{display:none;}
+}
