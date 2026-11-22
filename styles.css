@@ -1291,3 +1291,47 @@ body:after{
   body{background-attachment:scroll!important;background-position:center top!important;}
 }
 @media(prefers-reduced-motion:reduce){body:after{animation:none!important;}}
+
+
+/* PHOTO VISIBILITY RESET — place the studio image on the app itself */
+html,body{min-height:100%!important;background:#080808!important;}
+body{
+  background-image:none!important;
+  background-color:#080808!important;
+  animation:none!important;
+}
+body:before,body:after,
+.app-shell:before,.app-shell:after{
+  content:none!important;
+  display:none!important;
+  animation:none!important;
+  background:none!important;
+}
+.app-shell{
+  display:block!important;
+  position:relative!important;
+  isolation:isolate!important;
+  z-index:auto!important;
+  min-height:100vh!important;
+  background-color:#080808!important;
+  background-image:url("./ChatGPT%20Image%20Jul%2029%2C%202026%2C%2001_55_12%20AM.png")!important;
+  background-repeat:no-repeat!important;
+  background-position:center top!important;
+  background-size:100% auto!important;
+  background-attachment:scroll!important;
+}
+.main-content{
+  background:rgba(0,0,0,.08)!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+.topbar{
+  background:rgba(0,0,0,.28)!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+.player-bar{
+  background:rgba(8,8,8,.86)!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
