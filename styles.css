@@ -1106,3 +1106,70 @@ body:after{
 @media(prefers-reduced-motion:reduce){
   body:before,body:after{animation:none!important;}
 }
+
+
+/* MOTION LAYER V3 — image and light live inside the app stacking context */
+body{
+  background:#090909!important;
+  background-image:none!important;
+}
+body:before,body:after{
+  content:none!important;
+  display:none!important;
+  animation:none!important;
+}
+.app-shell{
+  position:relative!important;
+  isolation:isolate!important;
+  z-index:0!important;
+  min-height:100vh!important;
+  background:transparent!important;
+}
+.app-shell:before{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  inset:-2%!important;
+  z-index:0!important;
+  pointer-events:none!important;
+  background:
+    linear-gradient(125deg,rgba(5,5,7,.20),rgba(12,10,8,.08) 48%,rgba(5,5,7,.24)),
+    url("https://4tvibez.github.io/4TVIBEZ--MUSIC-/ChatGPT%20Image%20Jul%2029,%202026,%2001_55_12%20AM.png") center center/cover no-repeat!important;
+  transform:scale(1.02);
+  animation:tvzBackgroundMove 12s ease-in-out infinite alternate!important;
+  will-change:transform,filter;
+}
+.app-shell:after{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  pointer-events:none!important;
+  background:linear-gradient(110deg,transparent 39%,rgba(255,193,82,0) 46%,rgba(255,222,150,.24) 50%,rgba(255,193,82,0) 54%,transparent 61%)!important;
+  transform:translateX(-100%);
+  animation:tvzBackgroundGoldSweep 8s linear infinite!important;
+  will-change:transform;
+}
+.app-shell>.sidebar,.app-shell>.main-content{
+  position:relative!important;
+  z-index:1!important;
+}
+.player-bar{z-index:10!important;}
+@keyframes tvzBackgroundMove{
+  0%{transform:scale(1.02) translate3d(-.5%,0,0);filter:brightness(.92);}
+  100%{transform:scale(1.14) translate3d(.5%,-.5%,0);filter:brightness(1.10);}
+}
+@keyframes tvzBackgroundGoldSweep{
+  0%{transform:translateX(-100%);opacity:0;}
+  12%{opacity:1;}
+  88%{opacity:.9;}
+  100%{transform:translateX(100%);opacity:0;}
+}
+@media(max-width:650px){
+  .app-shell:before{animation-duration:18s!important;}
+  .app-shell:after{animation-duration:9s!important;}
+}
+@media(prefers-reduced-motion:reduce){
+  .app-shell:before,.app-shell:after{animation:none!important;}
+}
