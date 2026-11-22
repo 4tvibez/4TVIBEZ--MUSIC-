@@ -1209,3 +1209,35 @@ body:before,body:after{
  .topbar .top-actions{margin-left:auto;gap:8px!important;}
  .topbar .top-actions .record-top span{display:none;}
 }
+
+
+/* CRISP STUDIO BACKGROUND — no zoom blur or soft filters */
+.app-shell:before{
+  inset:0!important;
+  background:
+    linear-gradient(125deg,rgba(0,0,0,.10),rgba(0,0,0,.04) 48%,rgba(0,0,0,.12)),
+    url("https://4tvibez.github.io/4TVIBEZ--MUSIC-/ChatGPT%20Image%20Jul%2029,%202026,%2001_55_12%20AM.png") center center/cover no-repeat!important;
+  transform:none!important;
+  filter:none!important;
+  animation:tvzCrispLight 9s ease-in-out infinite alternate!important;
+  will-change:opacity;
+}
+@keyframes tvzCrispLight{
+  0%{opacity:.96;}
+  100%{opacity:1;}
+}
+.app-shell:after{
+  background:linear-gradient(110deg,transparent 43%,rgba(255,193,82,0) 47%,rgba(255,222,150,.13) 50%,rgba(255,193,82,0) 53%,transparent 57%)!important;
+  filter:none!important;
+  animation:tvzBackgroundGoldSweep 12s linear infinite!important;
+}
+.main-content,.topbar,.player-bar{
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+.main-content{background:rgba(0,0,0,.10)!important;}
+.topbar{background:rgba(0,0,0,.30)!important;}
+.player-bar{background:rgba(8,8,8,.78)!important;}
+@media(max-width:650px){
+  .app-shell:before{animation-duration:11s!important;}
+}
