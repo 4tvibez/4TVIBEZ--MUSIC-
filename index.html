@@ -37,7 +37,7 @@
         <button class="mobile-menu icon-button" id="mobileMenu" aria-label="Open menu">☰</button>
         <div class="history-buttons"><button class="round-button" aria-label="Go back" id="goBack">‹</button><button class="round-button" aria-label="Go forward" id="goForward">›</button></div>
         <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="What do you want to play?" autocomplete="off"><kbd>⌘ K</kbd></label>
-        <div class="top-actions"><button class="upload-top" id="uploadTop">＋ <span>Add music</span></button><button class="avatar" title="4TVIBEZ profile">4T</button></div>
+        <div class="top-actions"><button class="upload-top" id="uploadTop">＋ <span>Add music</span></button><button class="auth-open" id="authOpen">Log in</button><button class="avatar" id="profileAvatar" title="4TVIBEZ profile">4T</button></div>
       </header>
 
       <section class="page-section hero-section" id="homeView">
@@ -89,6 +89,26 @@
     <div class="player-extra"><span>♫</span><input id="volume" type="range" min="0" max="1" step="0.01" value="0.8" aria-label="Volume"></div>
   </footer>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="auth-backdrop" id="authBackdrop" hidden>
+    <section class="auth-panel" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <button class="auth-close" id="authClose" aria-label="Close">×</button>
+      <span class="eyebrow">WELCOME TO THE VIBE</span>
+      <h2 id="authTitle">Your music. Your account.</h2>
+      <p id="authDescription">Create an account to join 4TVIBEZ MUSIC.</p>
+      <form id="authForm">
+        <label>Your name<input id="authName" type="text" autocomplete="name" placeholder="Artist or listener name"></label>
+        <label>Email address<input id="authEmail" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+        <label>Password<input id="authPassword" type="password" autocomplete="current-password" minlength="6" required placeholder="At least 6 characters"></label>
+        <button class="primary-button auth-submit" id="authSubmit" type="submit">Create account <span>→</span></button>
+      </form>
+      <p class="auth-switch"><span id="authSwitchText">Already have an account?</span> <button id="authSwitch" type="button">Log in</button></p>
+      <p class="auth-message" id="authMessage" role="status"></p>
+      <button class="auth-logout" id="authLogout" hidden>Log out</button>
+    </section>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="auth.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
