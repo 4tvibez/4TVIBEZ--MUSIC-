@@ -913,3 +913,18 @@ body{background-image:none!important;}
   .sidebar{background:rgba(255,255,255,.94)!important;}
   .player-bar{background:rgba(250,248,255,.9)!important;}
 }
+
+
+/* FIX: restore the full-page studio background layer */
+.app-shell:before{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  pointer-events:none!important;
+  background:
+    linear-gradient(125deg,rgba(5,5,7,.30),rgba(12,10,8,.18) 48%,rgba(5,5,7,.34)),
+    linear-gradient(rgba(0,0,0,.10),rgba(0,0,0,.10)),
+    url("./ChatGPT%20Image%20Jul%2029,%202026,%2001_55_12%20AM.png") center center/cover!important;
+}
