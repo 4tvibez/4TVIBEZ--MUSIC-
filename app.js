@@ -8,7 +8,7 @@ let currentIndex = -1;
 let repeat = false;
 let shuffle = false;
 let toastTimer;
-let db;
+let db;\nlet muted = false;\nlet previousVolume = 0.8;\nlet favorites = new Set();\ntry { favorites = new Set(JSON.parse(localStorage.getItem('4tvibez-favorites') || '[]')); } catch (_) {}
 
 const DB_NAME = 'fourTvibezMusic';
 const DB_VERSION = 1;
@@ -89,7 +89,7 @@ function renderTracks() {
     const active = index === currentIndex;
     return '<tr data-index="' + index + '">' +
       '<td>' + (active ? '♫' : String(index + 1).padStart(2, '0')) + '</td>' +
-      '<td><div class="track-name"><span class="track-cover">♫</span><div><strong>' + escapeHTML(track.title) + '</strong><small>' + (active ? 'NOW PLAYING' : 'SAVED ON THIS DEVICE') + '</small></div></div></td>' +
+      '<td><div class="track-name"><span class="track-cover">♫</span><div><strong>' + escapeHTML(track.title) + '</strong><small>' + (active ? 'NOW PLAYING' : (favorites.has(track.id) ? '♥ FAVOURITE · ' : '') + 'SAVED ON THIS DEVICE') + '</small></div></div></td>' +
       '<td>' + escapeHTML(track.artist) + '</td>' +
       '<td>' + (track.duration || '—') + '</td>' +
       '<td><button class="row-play" data-play="' + index + '" aria-label="Play ' + escapeHTML(track.title) + '">▶</button><button class="row-play remove-track" data-remove="' + index + '" aria-label="Remove ' + escapeHTML(track.title) + '">×</button></td>' +
