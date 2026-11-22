@@ -1606,3 +1606,50 @@ input[type=range]{accent-color:#d5b36f!important;}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;}
 }
+
+
+/* LUXURY MOTION — subtle movement, never animates or blurs the studio background */
+@keyframes vibe-rise{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes mic-float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-9px)}
+}
+@keyframes ring-drift{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
+@keyframes sound-bars{
+  0%,100%{transform:scaleY(.28);opacity:.58}
+  50%{transform:scaleY(1);opacity:1}
+}
+@keyframes star-glow{
+  0%,100%{opacity:.45;text-shadow:0 0 5px rgba(240,215,154,.2)}
+  50%{opacity:1;text-shadow:0 0 18px rgba(240,215,154,.9)}
+}
+.hero-copy{animation:vibe-rise .85s both ease-out;}
+.hero-art{animation:mic-float 6s ease-in-out 1s infinite;}
+.art-ring.ring-one{animation:ring-drift 42s linear infinite;}
+.art-ring.ring-two{animation:ring-drift 56s linear infinite reverse;}
+.art-equalizer i{transform-origin:center bottom;animation:sound-bars 1.05s ease-in-out infinite;}
+.art-equalizer i:nth-child(2n){animation-delay:.18s;}
+.art-equalizer i:nth-child(3n){animation-delay:.36s;}
+.art-equalizer i:nth-child(4n){animation-delay:.52s;}
+.art-star{animation:star-glow 2.8s ease-in-out infinite;}
+.art-star.star-two{animation-delay:1.2s;}
+.hero-bottom{animation:vibe-rise 1s .25s both ease-out;}
+.primary-button,.upload-top,.play-button{position:relative;overflow:hidden;}
+.primary-button:after,.upload-top:after{
+  content:"";position:absolute;top:-40%;left:-65%;width:35%;height:180%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.32),transparent);
+  transform:skewX(-22deg);transition:left .65s ease;pointer-events:none;
+}
+.primary-button:hover:after,.upload-top:hover:after{left:135%;}
+@media(prefers-reduced-motion:reduce){
+  .hero-copy,.hero-art,.art-ring,.art-equalizer i,.art-star,.hero-bottom{
+    animation:none!important;
+  }
+  .primary-button:after,.upload-top:after{display:none!important;}
+}
