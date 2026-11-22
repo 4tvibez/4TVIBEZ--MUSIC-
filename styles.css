@@ -752,3 +752,39 @@ body{
  .mood-card{min-height:150px}
  .artist-callout{background-position:center,65% center}
 }
+
+
+/* VOICE STUDIO — glowing microphone artwork + recorder control */
+.record-top{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  min-height:40px;padding:0 15px;border:1px solid #d9d0fa;border-radius:999px;
+  background:linear-gradient(135deg,#fff,#f3edff);color:#7252df;
+  box-shadow:0 7px 22px #8062e81c;font-size:12px;font-weight:800;
+  transition:transform .2s,box-shadow .2s,background .2s
+}
+.record-top:hover{transform:translateY(-2px);box-shadow:0 10px 26px #8062e838}
+.record-top svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.record-top.is-recording{background:linear-gradient(135deg,#ffedf2,#ffe0e9);border-color:#ff9db7;color:#d62d64;animation:recordPulse 1.15s ease-in-out infinite}
+@keyframes recordPulse{50%{box-shadow:0 0 0 7px #ff6f9b20,0 8px 25px #e94e812e}}
+.hero-mic-orb{
+  position:absolute;right:25px;bottom:22px;z-index:3;width:104px;height:124px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;
+  border:1px solid #ffffffa8;border-radius:54px 54px 28px 28px;
+  background:linear-gradient(145deg,#ffffff65,#b9a6ff30);
+  box-shadow:inset 0 1px 12px #ffffff80,0 12px 35px #130c3566,0 0 34px #bca2ff99;
+  backdrop-filter:blur(15px);transform:rotate(7deg);
+  animation:micFloat 4s ease-in-out infinite
+}
+.hero-mic-orb svg{width:57px;height:66px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 9px #c9b6ff)}
+.hero-mic-orb span{font:700 7px var(--font);letter-spacing:1.2px;color:#fff;text-shadow:0 2px 8px #17102e}
+@keyframes micFloat{0%,100%{transform:translateY(0) rotate(7deg)}50%{transform:translateY(-9px) rotate(3deg)}}
+.hero-art{isolation:isolate}
+.art-title{z-index:2}
+.art-equalizer,.art-ring,.art-glow{z-index:1}
+@media(max-width:650px){
+ .record-top{min-height:36px;padding:0 10px;gap:5px}
+ .record-top span{font-size:11px}
+ .hero-mic-orb{right:12px;bottom:12px;width:82px;height:102px}
+ .hero-mic-orb svg{width:46px;height:54px}
+}
+@media(prefers-reduced-motion:reduce){.hero-mic-orb,.record-top.is-recording{animation:none!important}}
