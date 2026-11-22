@@ -864,3 +864,52 @@ body:after{
 @media(max-width:650px){
   body:before{font-size:clamp(58px,17vw,112px);line-height:.9;transform:rotate(-10deg);color:rgba(117,83,224,.12);}
 }
+
+
+/* FULL-PAGE 4TVIBEZ MUSIC BACKGROUND — spans the entire app layout */
+html,body{min-height:100%;background:#f4efff!important;}
+body{background-image:none!important;}
+.app-shell{
+  position:relative;isolation:isolate;
+  background:transparent!important;
+  min-height:100vh;
+}
+.app-shell:before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    linear-gradient(125deg,rgba(245,241,255,.58),rgba(238,246,255,.48) 48%,rgba(255,239,249,.58)),
+    url("https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=2400&q=90") center center/cover;
+}
+.app-shell:after{
+  content:"4TVIBEZ\\A MUSIC";
+  white-space:pre;position:absolute;inset:0;z-index:0;pointer-events:none;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  font-family:var(--display,system-ui,sans-serif);
+  font-size:clamp(76px,14vw,220px);line-height:.82;font-weight:900;
+  letter-spacing:.06em;color:rgba(108,75,205,.23);
+  -webkit-text-stroke:1px rgba(255,255,255,.35);
+  text-shadow:0 0 24px rgba(147,112,255,.34),0 0 75px rgba(105,77,210,.25);
+  transform:rotate(-12deg);
+}
+.app-shell>.sidebar,.app-shell>.main-content{position:relative;z-index:1;}
+.sidebar{
+  background:rgba(255,255,255,.56)!important;
+  backdrop-filter:blur(20px);
+  border-right:1px solid rgba(255,255,255,.55)!important;
+}
+.main-content{background:rgba(255,255,255,.13)!important;}
+.topbar{
+  background:rgba(250,248,255,.52)!important;
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.45)!important;
+}
+.player-bar{
+  background:rgba(250,248,255,.78)!important;
+  backdrop-filter:blur(24px);
+  border-top:1px solid rgba(255,255,255,.7)!important;
+}
+@media(max-width:650px){
+  .app-shell:after{font-size:clamp(62px,16vw,112px);line-height:.9;}
+  .sidebar{background:rgba(255,255,255,.94)!important;}
+  .player-bar{background:rgba(250,248,255,.9)!important;}
+}
