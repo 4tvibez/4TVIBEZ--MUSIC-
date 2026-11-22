@@ -994,3 +994,56 @@ body:after {
 @media(prefers-reduced-motion:reduce) {
   body, body:after { animation:none !important; }
 }
+
+
+/* REVISED CINEMATIC MOTION — animate a dedicated image layer */
+body { animation:none !important; }
+.app-shell {
+  position:relative !important;
+  isolation:isolate !important;
+}
+.app-shell:before {
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  inset:0 !important;
+  z-index:0 !important;
+  pointer-events:none !important;
+  background:
+    linear-gradient(125deg,rgba(5,5,7,.24),rgba(12,10,8,.12) 48%,rgba(5,5,7,.28)),
+    url("https://4tvibez.github.io/4TVIBEZ--MUSIC-/ChatGPT%20Image%20Jul%2029,%202026,%2001_55_12%20AM.png") center center / cover no-repeat !important;
+  transform:scale(1.035);
+  transform-origin:center center;
+  animation:fourTvibezStudioZoom 18s ease-in-out infinite alternate !important;
+  will-change:transform,filter;
+}
+@keyframes fourTvibezStudioZoom {
+  0% { transform:scale(1.035) translate3d(-.4%,0,0); filter:brightness(.94); }
+  50% { transform:scale(1.075) translate3d(.35%,-.25%,0); filter:brightness(1.08); }
+  100% { transform:scale(1.11) translate3d(0,.3%,0); filter:brightness(1); }
+}
+/* Slow moving gold light overlay */
+body:after {
+  content:"" !important;
+  position:fixed !important;
+  inset:-45% !important;
+  z-index:0 !important;
+  pointer-events:none !important;
+  background:linear-gradient(110deg,transparent 39%,rgba(255,193,82,.04) 46%,rgba(255,222,150,.18) 50%,rgba(255,193,82,.04) 54%,transparent 61%) !important;
+  transform:translateX(-70%) rotate(8deg);
+  animation:fourTvibezGoldSweep 13s ease-in-out infinite !important;
+  will-change:transform,opacity;
+}
+@keyframes fourTvibezGoldSweep {
+  0%,10% { transform:translateX(-70%) rotate(8deg); opacity:0; }
+  30% { opacity:1; }
+  75%,100% { transform:translateX(70%) rotate(8deg); opacity:0; }
+}
+.app-shell>.sidebar,.app-shell>.main-content { position:relative !important; z-index:1 !important; }
+@media(max-width:650px) {
+  .app-shell:before { animation-duration:24s !important; }
+  body:after { animation-duration:16s !important; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .app-shell:before,body:after { animation:none !important; }
+}
