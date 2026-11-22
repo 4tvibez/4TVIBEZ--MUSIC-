@@ -683,3 +683,72 @@ body{color:#202039;background:linear-gradient(145deg,#faf9ff 0%,#f2f5ff 48%,#fff
 @media(prefers-reduced-motion:reduce){
   .hero-art,.hero-art:after,.art-ring,.art-equalizer i,.art-star,.mood-card,.callout-stamp{animation:none!important;transition:none!important}
 }
+
+
+/* REALISTIC GLOW — photographic music-world art direction */
+body{
+ background:
+  radial-gradient(ellipse at 72% 4%,#cbbaff55,transparent 32%),
+  radial-gradient(ellipse at 12% 58%,#9edcff35,transparent 34%),
+  linear-gradient(135deg,#f8f7ff 0%,#f1f5ff 52%,#fff7fb 100%);
+}
+.hero-section{
+ background:
+  linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(250,248,255,.90) 44%,rgba(35,27,66,.08) 100%),
+  url("https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1800&q=90") center 42%/cover;
+ border:1px solid #e4dcfa;
+ box-shadow:0 28px 75px #5841a51a,0 0 45px #9d80f51c;
+}
+.hero-copy h1{text-shadow:0 5px 28px #6c55a514}
+.hero-art{
+ width:min(43%,470px);height:340px;border:1px solid #ffffffb8;
+ border-radius:30px;
+ background:
+  linear-gradient(145deg,rgba(34,22,69,.08),rgba(25,31,72,.3)),
+  url("https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1100&q=90") center/cover;
+ box-shadow:0 28px 75px #2d20594a,0 0 0 8px #ffffff35,0 0 48px #9a79ff62;
+}
+.hero-art:before{
+ content:"";position:absolute;inset:0;border-radius:inherit;
+ background:linear-gradient(135deg,#8d6aff36,transparent 45%,#6ac9ff36);
+ mix-blend-mode:screen;pointer-events:none
+}
+.art-glow{background:#a88aff77;filter:blur(62px);width:280px;height:280px}
+.art-ring{border-color:#ffffff8a;box-shadow:0 0 22px #b8a4ff55}
+.art-title{background:linear-gradient(135deg,#ffffff35,#ffffff12);border:1px solid #ffffff80;border-radius:18px;padding:22px 28px;backdrop-filter:blur(18px);box-shadow:0 18px 45px #17112d50}
+.art-title span,.art-title small{color:#fff;text-shadow:0 2px 12px #18102f}
+.art-title strong{color:#fff;text-shadow:0 5px 30px #1c143e}
+.art-equalizer i{box-shadow:0 0 12px #d8ceff}
+.mood-card{
+ background-size:cover!important;background-position:center!important;
+ border:1px solid #ffffffb8;border-radius:21px;
+ box-shadow:0 15px 36px #2d254d26,inset 0 -100px 85px #101020a8;
+}
+.mood-afro{background-image:linear-gradient(0deg,#140f20c9,transparent 80%),url("https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=850&q=85")!important}
+.mood-chill{background-image:linear-gradient(0deg,#101a2bc9,transparent 80%),url("https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=850&q=85")!important}
+.mood-energy{background-image:linear-gradient(0deg,#24101bc9,transparent 80%),url("https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=850&q=85")!important}
+.mood-love{background-image:linear-gradient(0deg,#24101fc9,transparent 80%),url("https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=850&q=85")!important}
+.mood-card:before{
+ content:"";position:absolute;inset:0;pointer-events:none;
+ background:linear-gradient(120deg,#ffffff24,transparent 42%,#a88bff22);
+ opacity:.75;transition:opacity .35s
+}
+.mood-card:hover:before{opacity:1}
+.mood-card strong{position:relative;text-shadow:0 3px 16px #080713b8}
+.mood-card span,.mood-card b{position:relative;text-shadow:0 2px 10px #080713}
+.artist-callout{
+ background:
+  linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(248,245,255,.91) 52%,rgba(35,24,63,.12) 100%),
+  url("https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1400&q=85") center 48%/cover;
+ box-shadow:0 22px 55px #51407820,0 0 35px #9d80f51a;
+}
+.callout-stamp{box-shadow:0 0 0 8px #ffffff52,0 18px 55px #7656d65c,0 0 48px #9674ff70}
+.player-bar{box-shadow:0 -12px 45px #3d2c6c1a,0 0 25px #a68aff12}
+.mini-cover{box-shadow:0 5px 20px #8062e84a,0 0 18px #987bff40}
+.primary-button,.play-button{box-shadow:0 9px 28px #8062e84a,0 0 24px #9b7bff35}
+@media(max-width:650px){
+ .hero-section{background-position:center,62% center}
+ .hero-art{width:100%;background-position:center}
+ .mood-card{min-height:150px}
+ .artist-callout{background-position:center,65% center}
+}
