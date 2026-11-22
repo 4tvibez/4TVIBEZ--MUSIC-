@@ -8,7 +8,15 @@ let currentIndex = -1;
 let repeat = false;
 let shuffle = false;
 let toastTimer;
-let db;\nlet muted = false;\nlet previousVolume = 0.8;\nlet favorites = new Set();\ntry { favorites = new Set(JSON.parse(localStorage.getItem('4tvibez-favorites') || '[]')); } catch (_) {}
+let db;
+let muted = false;
+let previousVolume = 0.8;
+let favorites = new Set();
+try { favorites = new Set(JSON.parse(localStorage.getItem('4tvibez-favorites') || '[]')); } catch (_) {}
+let muted = false;
+let previousVolume = 0.8;
+let favorites = new Set();
+try { favorites = new Set(JSON.parse(localStorage.getItem('4tvibez-favorites') || '[]')); } catch (_) {}
 
 const DB_NAME = 'fourTvibezMusic';
 const DB_VERSION = 1;
@@ -181,6 +189,8 @@ function playTrack(index) {
   document.getElementById('nowTitle').textContent = tracks[index].title;
   document.getElementById('nowArtist').textContent = tracks[index].artist;
   document.getElementById('miniCover').textContent = '♫';
+  document.getElementById('favoriteButton').classList.toggle('liked', favorites.has(tracks[index].id));
+  document.getElementById('favoriteButton').textContent = favorites.has(tracks[index].id) ? '♥' : '♡';
   renderTracks();
   audio.play().catch(() => notify('Playback could not start. Try selecting the track again.'));
 }
@@ -297,16 +307,31 @@ audio.addEventListener('loadedmetadata', () => {
 audio.addEventListener('ended', () => {
   if (!repeat) nextTrack();
 });
-audio.addEventListener('play', () => document.getElementById('playButton').textContent = 'Ⅱ');
-audio.addEventListener('pause', () => document.getElementById('playButton').textContent = '▶');
+audio.addEventListener('play', () => { document.getElementById('playButton').textContent = 'Ⅱ'; document.querySelector('.player-bar').classList.add('is-playing'); });
+audio.addEventListener('pause', () => { document.getElementById('playButton').textContent = '▶'; document.querySelector('.player-bar').classList.remove('is-playing'); });
 document.getElementById('volume').addEventListener('input', event => {
   audio.volume = Number(event.target.value);
+  muted = audio.volume === 0;
+  document.getElementById('muteButton').textContent = muted ? '♪̸' : '♫';
+});
+document.getElementById('muteButton').addEventListener('click', () => {
+  muted = !muted;
+  if (muted) { previousVolume = audio.volume || Number(document.getElementById('volume').value) || 0.8; audio.volume = 0; }
+  else audio.volume = previousVolume || 0.8;
+  document.getElementById('volume').value = audio.volume;
+  document.getElementById('muteButton').textContent = muted ? '♪̸' : '♫';
+  notify(muted ? 'Sound muted.' : 'Sound restored.');
 });
 
 document.getElementById('favoriteButton').addEventListener('click', event => {
-  event.currentTarget.classList.toggle('liked');
-  event.currentTarget.textContent = event.currentTarget.classList.contains('liked') ? '♥' : '♡';
-  notify(event.currentTarget.classList.contains('liked') ? 'Favourite marked for this session.' : 'Favourite removed.');
+  if (currentIndex < 0 || !tracks[currentIndex]) { notify('Play a track before adding a favourite.'); return; }
+  const id = tracks[currentIndex].id;
+  if (favorites.has(id)) favorites.delete(id); else favorites.add(id);
+  localStorage.setItem('4tvibez-favorites', JSON.stringify([...favorites]));
+  event.currentTarget.classList.toggle('liked', favorites.has(id));
+  event.currentTarget.textContent = favorites.has(id) ? '♥' : '♡';
+  renderTracks();
+  notify(favorites.has(id) ? 'Added to your favourites.' : 'Removed from your favourites.');
 });
 
 document.getElementById('createPlaylist').addEventListener('click', createPlaylist);
