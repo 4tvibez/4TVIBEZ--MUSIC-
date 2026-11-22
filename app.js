@@ -13,10 +13,6 @@ let muted = false;
 let previousVolume = 0.8;
 let favorites = new Set();
 try { favorites = new Set(JSON.parse(localStorage.getItem('4tvibez-favorites') || '[]')); } catch (_) {}
-let muted = false;
-let previousVolume = 0.8;
-let favorites = new Set();
-try { favorites = new Set(JSON.parse(localStorage.getItem('4tvibez-favorites') || '[]')); } catch (_) {}
 
 const DB_NAME = 'fourTvibezMusic';
 const DB_VERSION = 1;
