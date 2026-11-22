@@ -1241,3 +1241,53 @@ body:before,body:after{
 @media(max-width:650px){
   .app-shell:before{animation-duration:11s!important;}
 }
+
+
+/* SHARP STUDIO BACKDROP — keep the source image at viewport scale */
+html,body{min-height:100%;background-color:#080808!important;}
+body{
+  position:relative!important;
+  isolation:isolate!important;
+  background-image:url("https://4tvibez.github.io/4TVIBEZ--MUSIC-/ChatGPT%20Image%20Jul%2029,%202026,%2001_55_12%20AM.png")!important;
+  background-position:center center!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+  background-attachment:fixed!important;
+}
+.app-shell{
+  position:relative!important;
+  z-index:1!important;
+  isolation:auto!important;
+  min-height:100vh!important;
+  background:transparent!important;
+}
+.app-shell:before,.app-shell:after{
+  content:none!important;
+  display:none!important;
+  animation:none!important;
+}
+.main-content{background:rgba(0,0,0,.12)!important;}
+.topbar{background:rgba(0,0,0,.34)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}
+.player-bar{background:rgba(8,8,8,.82)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}
+/* Animate only a subtle light sweep; never scale or filter the photograph */
+body:after{
+  content:""!important;
+  display:block!important;
+  position:fixed!important;
+  inset:0!important;
+  z-index:0!important;
+  pointer-events:none!important;
+  background:linear-gradient(110deg,transparent 42%,rgba(255,205,115,0) 47%,rgba(255,222,150,.15) 50%,rgba(255,205,115,0) 53%,transparent 58%)!important;
+  transform:translateX(-100%);
+  animation:tvzSharpGoldSweep 12s linear infinite!important;
+}
+@keyframes tvzSharpGoldSweep{
+  0%{transform:translateX(-100%);opacity:0;}
+  15%{opacity:1;}
+  85%{opacity:.85;}
+  100%{transform:translateX(100%);opacity:0;}
+}
+@media(max-width:650px){
+  body{background-attachment:scroll!important;background-position:center top!important;}
+}
+@media(prefers-reduced-motion:reduce){body:after{animation:none!important;}}
