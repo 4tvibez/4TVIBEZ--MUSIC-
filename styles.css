@@ -1047,3 +1047,62 @@ body:after {
 @media(prefers-reduced-motion:reduce) {
   .app-shell:before,body:after { animation:none !important; }
 }
+
+
+/* DEFINITIVE STUDIO MOTION FIX: animate the page-level image, not the grid pseudo-element */
+body{position:relative!important;isolation:isolate!important;background-color:#090909!important;}
+body:before{
+  content:""!important;
+  display:block!important;
+  position:fixed!important;
+  inset:-5%!important;
+  z-index:0!important;
+  pointer-events:none!important;
+  background:
+    linear-gradient(125deg,rgba(5,5,7,.22),rgba(12,10,8,.08) 48%,rgba(5,5,7,.26)),
+    url("https://4tvibez.github.io/4TVIBEZ--MUSIC-/ChatGPT%20Image%20Jul%2029,%202026,%2001_55_12%20AM.png") center center/cover no-repeat!important;
+  transform:scale(1.02);
+  transform-origin:center;
+  animation:tvzStudioCamera 16s ease-in-out infinite alternate!important;
+  will-change:transform,filter;
+}
+body:after{
+  content:""!important;
+  display:block!important;
+  position:fixed!important;
+  inset:-55% -80%!important;
+  z-index:0!important;
+  pointer-events:none!important;
+  background:linear-gradient(105deg,transparent 42%,rgba(255,195,85,0) 46%,rgba(255,218,145,.22) 50%,rgba(255,195,85,0) 54%,transparent 58%)!important;
+  transform:translate3d(-65%,0,0) rotate(8deg);
+  animation:tvzGoldLight 10s linear infinite!important;
+  will-change:transform;
+}
+.app-shell{
+  position:relative!important;
+  z-index:1!important;
+  isolation:isolate!important;
+  min-height:100vh;
+  background:transparent!important;
+}
+.app-shell:before{content:none!important;display:none!important;animation:none!important;}
+.app-shell:after{pointer-events:none!important;}
+.app-shell>.sidebar,.app-shell>.main-content{position:relative;z-index:1;}
+.player-bar{z-index:10!important;}
+@keyframes tvzStudioCamera{
+  0%{transform:scale(1.02) translate3d(-.5%,0,0);filter:brightness(.92);}
+  100%{transform:scale(1.13) translate3d(.5%,-.4%,0);filter:brightness(1.08);}
+}
+@keyframes tvzGoldLight{
+  0%{transform:translate3d(-65%,0,0) rotate(8deg);opacity:0;}
+  12%{opacity:1;}
+  88%{opacity:.9;}
+  100%{transform:translate3d(65%,0,0) rotate(8deg);opacity:0;}
+}
+@media(max-width:650px){
+  body:before{animation-duration:22s!important;}
+  body:after{animation-duration:13s!important;}
+}
+@media(prefers-reduced-motion:reduce){
+  body:before,body:after{animation:none!important;}
+}
