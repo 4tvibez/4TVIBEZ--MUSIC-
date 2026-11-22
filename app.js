@@ -381,7 +381,8 @@ async function initialiseLibrary() {
   if (button) button.addEventListener('click', openPicker);
 });
 audioInput.addEventListener('change', event => addFiles(event.target.files));
-document.getElementById('recordButton').addEventListener('click', toggleRecording);\ndocument.getElementById('playButton').addEventListener('click', togglePlay);
+document.getElementById('recordButton').addEventListener('click', toggleRecording);
+document.getElementById('playButton').addEventListener('click', togglePlay);
 document.getElementById('nextButton').addEventListener('click', nextTrack);
 document.getElementById('previousButton').addEventListener('click', previousTrack);
 
