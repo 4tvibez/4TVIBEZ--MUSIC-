@@ -12,6 +12,8 @@ let db;
 let muted = false;
 let previousVolume = 0.8;
 let favorites = new Set();
+let activeFilter = 'all';
+let activeMood = '';
 try { favorites = new Set(JSON.parse(localStorage.getItem('4tvibez-favorites') || '[]')); } catch (_) {}
 
 const DB_NAME = 'fourTvibezMusic';
@@ -83,13 +85,28 @@ function escapeHTML(value) {
 }
 
 function renderTracks() {
+  const count = document.getElementById('libraryCount');
+  const heading = document.getElementById('libraryHeading');
+  const visibleTracks = tracks.map((track, index) => ({ track, index })).filter(({track}) => {
+    const text = (track.title + ' ' + track.artist).toLowerCase();
+    const matchesFavorite = activeFilter !== 'favorites' || favorites.has(track.id);
+    const matchesMood = !activeMood || text.includes(activeMood.toLowerCase());
+    return matchesFavorite && matchesMood;
+  });
+  if (count) count.textContent = visibleTracks.length + (visibleTracks.length === 1 ? ' TRACK' : ' TRACKS') + (activeFilter === 'favorites' ? ' · FAVOURITES' : ' · IN YOUR LIBRARY');
+  if (heading) heading.textContent = activeFilter === 'favorites' ? 'Your favourites' : (activeMood ? activeMood + ' picks' : 'Recently added');
   if (!tracks.length) {
     trackRows.innerHTML = '<tr class="empty-row"><td colspan="5"><span class="empty-icon">♫</span><strong>Your music starts here.</strong><span>Add audio files from your device to build your library.</span><button class="outline-button" id="emptyUpload">＋ Add your first track</button></td></tr>';
     document.getElementById('emptyUpload').addEventListener('click', openPicker);
     return;
   }
 
-  trackRows.innerHTML = tracks.map((track, index) => {
+  if (!visibleTracks.length) {
+    trackRows.innerHTML = '<tr class="empty-row"><td colspan="5"><span class="empty-icon">♫</span><strong>' + (activeFilter === 'favorites' ? 'No favourites yet.' : 'No matching tracks yet.') + '</strong><span>' + (activeFilter === 'favorites' ? 'Tap the heart while a song is playing to save it here.' : 'Try another mood or add more music to your library.') + '</span></td></tr>';
+    return;
+  }
+
+  trackRows.innerHTML = visibleTracks.map(({track, index}) => {
     const active = index === currentIndex;
     return '<tr data-index="' + index + '">' +
       '<td>' + (active ? '♫' : String(index + 1).padStart(2, '0')) + '</td>' +
@@ -338,6 +355,15 @@ document.getElementById('searchInput').addEventListener('input', event => {
     const track = tracks[Number(row.dataset.index)];
     row.hidden = !((track.title + ' ' + track.artist).toLowerCase().includes(query));
   });
+  if (query) { document.getElementById('libraryView').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+});
+
+document.querySelectorAll('.filter-pill').forEach(button => {
+  button.addEventListener('click', () => {
+    activeFilter = button.dataset.filter;
+    document.querySelectorAll('.filter-pill').forEach(item => item.classList.toggle('active', item === button));
+    renderTracks();
+  });
 });
 
 document.getElementById('exploreButton').addEventListener('click', () => {
@@ -349,8 +375,15 @@ document.getElementById('viewAll').addEventListener('click', () => {
 
 document.querySelectorAll('.mood-card').forEach(card => {
   card.addEventListener('click', () => {
+    const mood = card.dataset.mood;
+    activeMood = activeMood === mood ? '' : mood;
+    document.querySelectorAll('.mood-card').forEach(item => item.classList.toggle('selected', item.dataset.mood === activeMood));
+    activeFilter = 'all';
+    document.querySelectorAll('.filter-pill').forEach(item => item.classList.toggle('active', item.dataset.filter === 'all'));
     document.getElementById('searchInput').value = '';
-    notify(card.dataset.mood + ' mood selected. Genre collections are coming soon.');
+    renderTracks();
+    document.getElementById('libraryView').scrollIntoView({ behavior: 'smooth' });
+    notify(activeMood ? mood + ' selected. Matching songs in your library are shown.' : 'Mood filter cleared.');
   });
 });
 
