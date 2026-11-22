@@ -950,3 +950,47 @@ body {
   .sidebar { background:rgba(8,8,8,.84) !important; }
   .player-bar { background:rgba(8,8,8,.84) !important; }
 }
+
+
+/* CINEMATIC STUDIO BACKGROUND MOTION */
+body {
+  background-size: 108% 108% !important;
+  background-position: 50% 50% !important;
+  animation: studioCameraDrift 34s ease-in-out infinite alternate;
+}
+@keyframes studioCameraDrift {
+  0%   { background-size:108% 108%; background-position:48% 48%; }
+  50%  { background-size:114% 114%; background-position:53% 50%; }
+  100% { background-size:109% 109%; background-position:50% 54%; }
+}
+/* A gentle golden light passes over the studio without blocking controls */
+body:after {
+  content:"";
+  position:fixed;
+  inset:-35%;
+  z-index:0;
+  pointer-events:none;
+  background:linear-gradient(
+    112deg,
+    transparent 35%,
+    rgba(255,196,92,.035) 45%,
+    rgba(255,220,145,.13) 50%,
+    rgba(255,196,92,.035) 55%,
+    transparent 65%
+  );
+  transform:translateX(-55%) rotate(8deg);
+  animation: studioGoldenSweep 19s ease-in-out infinite;
+}
+@keyframes studioGoldenSweep {
+  0%, 12% { transform:translateX(-65%) rotate(8deg); opacity:0; }
+  30% { opacity:1; }
+  68% { transform:translateX(65%) rotate(8deg); opacity:.8; }
+  82%, 100% { transform:translateX(75%) rotate(8deg); opacity:0; }
+}
+@media(max-width:650px) {
+  body { animation-duration:42s; }
+  body:after { animation-duration:24s; }
+}
+@media(prefers-reduced-motion:reduce) {
+  body, body:after { animation:none !important; }
+}
