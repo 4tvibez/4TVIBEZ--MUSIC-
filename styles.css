@@ -928,3 +928,25 @@ body{background-image:none!important;}
     linear-gradient(rgba(0,0,0,.10),rgba(0,0,0,.10)),
     url("./ChatGPT%20Image%20Jul%2029,%202026,%2001_55_12%20AM.png") center center/cover!important;
 }
+
+
+/* FINAL BACKGROUND FIX — use the published image directly on the page */
+html, body { min-height:100%; }
+body {
+  background: #090909 url("https://4tvibez.github.io/4TVIBEZ--MUSIC-/ChatGPT%20Image%20Jul%2029,%202026,%2001_55_12%20AM.png") center center / cover fixed no-repeat !important;
+}
+.app-shell {
+  min-height:100vh;
+  background:transparent !important;
+}
+.app-shell:before { content:none !important; display:none !important; }
+.app-shell:after { pointer-events:none; }
+.sidebar { background:rgba(8,8,8,.68) !important; }
+.main-content { background:rgba(8,8,8,.20) !important; }
+.topbar { background:rgba(8,8,8,.55) !important; }
+.player-bar { background:rgba(8,8,8,.72) !important; }
+@media(max-width:650px) {
+  body { background-attachment:scroll !important; background-position:center top !important; }
+  .sidebar { background:rgba(8,8,8,.84) !important; }
+  .player-bar { background:rgba(8,8,8,.84) !important; }
+}
